@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+             <h1 class="text-center display-3 py-5">Tareas</h1>
+        <br />
+            <ul class="list-group">
+                {% for task in tasks %}
+                    <a href="{% url 'task_detail' task.id %}">
+                        <li class="list-group-item">
+                            {% if task.important %}
+                            <h1 class="fw-bold text-success">{{ task.tittle}}</h1>
+                            {% else %}
+                                <h1 class="fw-fold">{{ task.tittle }}</h1>
+                            {% endif %}
+                            <p>Creada por {{ task.user.username}}</p>
+                        </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+   </main>
+
+{% endblock %}
